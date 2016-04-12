@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width">
+    
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/artDialog4.1.7/artDialog.js?skin=default"></script>
+    <script src="js/artDialog4.1.7/plugins/iframeTools.source.js"></script>
+    <style type="text/css">
+    	input{
+    		width:50px;
+    	}
+    	input:before{
+    		content: "--";
+    		display: block;
+    	}
+    </style>
+</head>
+<body onload="cc()">
+    <span id="sp1" ></span>
+	<input type="checkbox" id="hchk" onclick="selectAll()" />
+	<input type="checkbox"  />
+	<input type="checkbox"  />
+	<input type="checkbox"  />
+	<input type="checkbox"  />
+	<input type="checkbox"  />
+	<input type="checkbox" name="subCheck" id="a" />
+	<input type="checkbox" name="subCheck" id="s"/>
+	<input type="checkbox" name="subCheck" id="d"/>
+	<input type="text" id="aa">
+
+</body>
+</html>
+<script type="text/javascript">
+    var subdialog=null;
+    function cc(){
+	var tel='186101450077';
+	var patrn = /^((13[0-9]|17[0-9]|15[0123456789]|18[0-9]|14[57])[0-9]{8})|(12[0-9][0-9]{9})$/;
+            if (!patrn.exec(tel)) {
+                alert("手机号格式错误！");
+                return false;
+            }
+	
+	}
+	   function selectAll() {
+        $("input:checkbox[name='subCheck']").attr("checked", $("#hchk")[0].checked);
+		 var ids = "";
+         $("input:checkbox[name='subCheck']").each(function () {
+            ids += ","+this.id;
+        });
+		var patrn = /^[0|1|2|3|4|5|6|7|8|9|,]+$/;
+		var isdd=patrn.test('1111,11');
+		var reg = RegExp(/[(\ )(\~)(\!)(\@)(\#)(\$)(\%)(\^)(\&)(\*)(\()(\))(\-)(\_)(\+)(\=)(\[)(\])(\{)(\})(\|)(\\)(\;)(\:)(\')(\")(\,)(\.)(\/)(\<)(\>)(\?)(\)]+/);    
+		var isok=reg.test('?')
+		//alert(ids);
+		if($("#hchk")[0].checked){
+			$("#aa").val("全选");
+            
+            /*art.dialog({
+                content:'123',
+                lock:true,
+            });*/
+            //art.dialog.alert("123");
+            //art.dialog.tips("全选", 3);
+            /*art.dialog.confirm('你确认删除操作？', function(){
+                art.dialog.tips('你执行了删除操作');
+
+            }, function(){
+                art.dialog.tips('你取消了操作');
+            });
+            */
+            art.dialog.notice({
+    title: '万象网管',
+    width: 220,// 必须指定一个像素宽度值或者百分比，否则浏览器窗口改变可能导致artDialog收缩
+    content: '尊敬的顾客朋友，您IQ卡余额不足10元，请及时充值',
+    icon: 'face-sad',
+    time: 5
+});
+            }
+		else
+			$("#aa").val("非全选");
+    }
+
+    $(function(){
+    	$("input:checkbox[name='subCheck']").each(function () {
+            $(this).click(function(){
+            	if(!$(this)[0].checked){
+            		$("#hchk")[0].checked=false;
+            		$("#aa").val("非全选");
+            	}
+            	else{
+            		if($("input:checkbox[name='subCheck']:checked").length==$("input:checkbox[name='subCheck']").length){
+            			$("#hchk")[0].checked=true;
+            			$("#aa").val("全选");
+            		}
+            		
+            	}
+                a(this.id);
+            });
+        });
+    });
+
+    function a(domid){
+        if(subdialog!=null)
+            subdialog.close();
+        subdialog=art.dialog({
+            follow: document.getElementById(domid),
+            content: '跟随',
+        });
+        
+    }
+
+</script>

@@ -1,0 +1,61 @@
+.icon-home
+.icon-arrowRight
+.icon-arrowLeft
+.icon-arrowDown
+.icon-arrowUp
+.icon-comment
+.icon-comment-text
+.icon-mail
+.icon-calendar
+.icon-plus
+.icon-minus
+.icon-file
+.icon-folder
+.icon-tag
+.icon-desktop
+.icon-tablet
+.icon-phone
+.icon-menu
+.icon-download
+.icon-upload
+.icon-tpl-full
+.icon-tpl-side-r
+.icon-tpl-side-l
+.icon-list-view
+.icon-grid-view
+.icon-camera
+.icon-image
+.icon-play
+.icon-stop
+.icon-pause
+.icon-forward
+.icon-next
+.icon-rewind
+.icon-prev
+.icon-stats
+.icon-battery-empty
+.icon-battery-1_4
+.icon-battery-half
+.icon-battery-3_4
+.icon-battery-full
+.icon-sound-mute
+.icon-sound-normal
+.icon-sound-loud
+用法
+
+在html文件的head标签内容引入 cikonss.css 文件，如下：
+
+<link rel="stylesheet" href="cikonss.css" />
+现在就可以直接使用了，cikonss共有43个icon，5种尺寸、3种样式。每个icon都是由两个 <span> 元素构成。父元素定义如下：
+
+general style: .icon (mandatory)
+the size: .icon-small, .icon-mid, .icon-large, .icon-extra-large, .icon-huge (mandatory)
+variant: .icon-square, .icon-rounded (optional)
+<span class="icon icon-small icon-square">...</span>
+子元素才是真正的icon实现 -- 可以使用的class在 预览 部分。每个icon的组织形式必须如下：
+
+<span class="icon icon-mid"><span class="icon-mail"></span></span>
+
+样式是可选的：
+
+<span class="icon icon-small icon-square"><span class="icon-mail"></span></span>

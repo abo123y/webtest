@@ -1,0 +1,41 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    
+</head>
+<script type="text/javascript">
+var rie; //全局变量
+function GetCursor() {
+    if (document.all) {//IE要保存Range
+var obj = document.getElementById('content');
+obj.focus(); 
+rie = document.selection.createRange();
+    }
+}
+//光标定位与指定位置插入文本
+//str ---   要插入的字符
+function insertText(str) {
+var obj = document.getElementById('content');
+    if (document.selection) { //ie
+obj.focus();//先激活当前对象
+rie.text = str;
+    } else if (typeof obj.selectionStart === 'number' && typeof obj.selectionEnd === 'number') { //非ie
+        var startPos = obj.selectionStart,
+            endPos = obj.selectionEnd,
+            cursorPos = startPos,
+            tmpStr = obj.value;
+        obj.value = tmpStr.substring(0, startPos) + str + tmpStr.substring(endPos, tmpStr.length);
+        cursorPos += str.length;
+        obj.selectionStart = obj.selectionEnd = cursorPos;
+    } else {
+        obj.value += str;
+    }
+}
+</script>
+<body>
+<form name="inputform">
+<textarea name="message" id="content"></textarea>
+<a href="javascript:insertText('[smile]')">插入</a></form></body>
+</html>
